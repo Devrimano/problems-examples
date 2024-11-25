@@ -10,11 +10,10 @@ public class GuessNumber {
         System.out.println("please enter length of number");
         int lengthOfNumber = sc.nextInt();
         int attemptCounter = 0;
-        int low = (int) Math.pow(10, lengthOfNumber - 1);
+        int low = (int) Math.pow(10, lengthOfNumber-1);
         int hi = low * 10;
         int randomNumber = new Random().nextInt(low, hi);
         System.out.println(randomNumber);
-        int[] userArr = new int[lengthOfNumber];
         int[] randomNumberArr = new int[lengthOfNumber];
         for (int i = randomNumberArr.length-1; i>=0; i--) {
             randomNumberArr[i] = randomNumber%10;
@@ -24,10 +23,12 @@ public class GuessNumber {
             attemptCounter++;
             int yellowCounter = 0;
             int greenCounter = 0;
-            for (int i = 0; i < userArr.length; i++) {
-                userArr[i] = sc.nextInt();
+            int userNumber = sc.nextInt();
+            int[] userArr = new int[lengthOfNumber];
+            for (int i = userArr.length-1; i >=0 ; i--) {
+                userArr[i]=userNumber%10;
+                userNumber /=10;
             }
-
             for (int i = 0; i < userArr.length; i++) {
                 if(userArr[i] == randomNumberArr[i]){
                     greenCounter++;
